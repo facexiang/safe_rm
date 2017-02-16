@@ -1,0 +1,15 @@
+safe_rm () {
+  for last; do
+    echo $last | grep '^-' >/dev/null 2>&1
+    if [[ $? == 1 ]]; then
+      if [ -e "$last" ]; then
+        file=$(echo $last | awk -F/ '{print $NF}')
+        mv $last ~/.MyTrash/"$file-$(date +%Y_%m_%d_%H_%M_%S)"
+      else
+        echo "rm: $last: No such file or directory"
+      fi
+    fi
+  done
+}
+
+alias rm='safe_rm'
