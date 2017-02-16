@@ -1,4 +1,4 @@
 # safe_rm
-Alias for your rm command
+Alias for rm command
 
 Cherish life away from rm command
